@@ -1,4 +1,4 @@
-github "Alamofire/Alamofire" "3.4.1"
-github "rs/SDWebImage" "3.8.1"
-github "SnapKit/SnapKit" "0.22.0"
-github "SwiftyJSON/SwiftyJSON" "2.3.3"
+github "Alamofire/Alamofire" "4.0.0"
+github "rs/SDWebImage" "3.8.2"
+github "SnapKit/SnapKit" "fa96e379bc7880f1f60eba48430763c490a7696b"
+github "SwiftyJSON/SwiftyJSON" "1a9755949a652967dc2986cd7f4653496e556715"

@@ -1,4 +1,4 @@
 github "Alamofire/Alamofire"
 github "rs/SDWebImage"
-github "SnapKit/SnapKit"
-github "SwiftyJSON/SwiftyJSON"
+github "SnapKit/SnapKit" "feature/0.40.0"
+github "SwiftyJSON/SwiftyJSON" "swift3"

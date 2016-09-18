@@ -10,7 +10,6 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 import SnapKit
-//import Alamofire.Swift
 //import Validation
 
 class ViewController: UIViewController {
@@ -19,19 +18,28 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let headers = [
-            "Content-Type":"application/json",
-            ]
-        let body : [String : AnyObject] = [:]
-        
-        Alamofire.request(.GET, "http://httpbin.org/get")
-        
-        Alamofire.request(.GET, "http://httpbin.org/get", parameters: ["foo": "bar"])
-
-//        Alamofire.request(.POST, "")
-        
         ///*
-        Alamofire.request(.GET, "http://www.baidu.com", headers: headers, parameters: body, encoding: .JSON).responseJSON { response in
+//        let headers = ["Content-Type":"application/json",]
+        let body : Parameters = [:]
+//        let parameters: Parameters = ["foo": "bar"]
+        
+        // Alamofire 4
+        Alamofire.request("", method: .get ,parameters: body, encoding: JSONEncoding.default)
+            .validate { request, response, data in
+                // Custom evaluation closure now includes data (allows you to parse data to dig out error messages if necessary)
+                return .success
+            }
+            .responseJSON { response in
+                debugPrint(response)
+                
+            }
+        
+    
+        // Alamofire 5
+        /*
+        Alamofire.request(.GET, "http://httpbin.org/get", parameters: ["foo": "bar"])
+//        Alamofire.request(.POST, "")
+        Alamofire.request(.GET, "http://www.baidu.com", headers: headers, parameters: body, encoding: .json).responseJSON { response in
             print("response = \(response)")
             let (response, result, data) = (response.response, response.result, response.data)
             if (result.error == nil) {
@@ -41,16 +49,20 @@ class ViewController: UIViewController {
                 print("Error value = \(response?.statusCode)")
             }
         }
-        //*/
+        */
         
         let imgView = UIImageView()
-        imgView.backgroundColor = .redColor()
+        imgView.backgroundColor = UIColor.red
         self.view.addSubview(imgView)
-        imgView.snp_makeConstraints { (make) in
+        imgView.snp.makeConstraints { (make) in
             make.left.top.equalTo(10)
             make.right.bottom.equalTo(-10)
         }
-        
+//        imgView.snp_makeConstraints { (make) in
+//            make.left.top.equalTo(10)
+//            make.right.bottom.equalTo(-10)
+//        }
+        //*/
         
     }
 

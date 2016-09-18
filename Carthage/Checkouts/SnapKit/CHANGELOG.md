@@ -1,14 +1,31 @@
 CHANGELOG
 =======
 
-# 0.22.0 - August 8 2016
+# 0.40.0.beta - WIP
 
-* Added `layoutConstraint` getter to `Constraint` to get the underlying NSLayoutConstraints created by a constraint
-* Updated support for Swift 2.3 and Xcode 8 Beta 3
+**SnapKit 0.40.0** is a complete re-write to take advantage of modern Swift 3.0 as well as
+clean up the API. As such please use with caution and check your apps thoroughly
 
-# 0.21.1 - June 20 2016
+### Breaking
 
-* Added support for Swift 2.3
+* iOS 7.0 support has been removed
+* `install` and `uninstall` have been removed, use `activate` and `deactivate` instead
+* DSL is now accessed through `.snp.*` rather than `.snp_*`. For example `view.snp.makeConstraints { }`
+* Constraints are now updated through `update(offset:)`, `update(inset:)` and `update(priority:)`
+* `.inset()` will no longer take `CGPoint` or `CGSize` as input
+* `.offset()` will no longer take `CGPoint`, `CGSize`, `EdgeInsets` as input
+* `updateConstraints` will no longer allow creating new constraints unless there are no existing constraints for the view. If it does generate new constraints it will throw a fatal error.
+* `UIEdgeInsets` are now have their right and bottom value inverted for more natural results such as `make.edges.equalTo(UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)).inset()`
+
+### Enhancements
+
+* Debugging output has been improved to show exact file/line number from which the broken constraint was created
+* Exceptions thrown during constraint creation have been replaced with `fatalError` with better output
+* Constraints are now installed through `NSLayoutConstraint.activate` and what view they are added to is now deferred to UIKit
+* Added `var contentHugging<Axis>Priority: CGFloat` to `make`
+* Added `var contentCompressionResistance<Axis>Priority: CGFloat` to `make`
+* Added support for `UILayoutGuide` via `make.left.equalTo(guide.snp.top)`
+* Added support for constraining edges to margins or vice versa via `make.edges.equalTo(other.snp.margins)`
 
 # 0.21.0 - May 11 2016
 
