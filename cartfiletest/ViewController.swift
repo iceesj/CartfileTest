@@ -35,7 +35,7 @@ class ViewController: UIViewController {
             }
         
     
-        // Alamofire 5
+        // Alamofire 3
         /*
         Alamofire.request(.GET, "http://httpbin.org/get", parameters: ["foo": "bar"])
 //        Alamofire.request(.POST, "")
