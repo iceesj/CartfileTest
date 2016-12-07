@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SwiftyJSON
+//import SwiftyJSON
 import Alamofire
 import SnapKit
 //import Validation
